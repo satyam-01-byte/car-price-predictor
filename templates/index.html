@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <title>Car Price Predictor</title>
+  </head>
+  <body>
+    <div class="content">
+      <form action="{{ url_for('predict') }}" method="POST">
+        <h2>Car Price Predictor</h2>
+
+        <div class="inp">
+          <label for="Years_Old">Year (Bought in)</label>
+          <input type="number" name="Years_Old" id="Years_Old" />
+        </div>
+
+        <div class="inp">
+          <label for="Present_Price"
+            >What is the showroom Price? (in lakhs)</label
+          >
+          <input id="Present_Price" name="Present_Price" required />
+        </div>
+
+        <div class="inp">
+          <label for="Kms_Driven">How many Kilometers driven?</label>
+          <input id="Kms_Driven" name="Kms_Driven" required />
+        </div>
+
+        <div class="inp">
+          <p>How many previous owners of the car?</p>
+          <input type="radio" id="0" name="Owner" value="0" checked />
+          <label for="0">0</label>
+          <input type="radio" id="1" name="Owner" value="1" />
+          <label for="1">1</label>
+          <input type="radio" id="3" name="Owner" value="3" />
+          <label for="3">3</label>
+        </div>
+
+        <div class="inp">
+          <p>What is the fuel type?</p>
+          <input
+            type="radio"
+            id="Petrol"
+            name="Fuel_Type_Petrol"
+            value="Petrol"
+            checked
+          />
+          <label for="Petrol">Petrol</label>
+          <input
+            type="radio"
+            id="Diesel"
+            name="Fuel_Type_Petrol"
+            value="Diesel"
+          />
+          <label for="Diesel">Diesel</label>
+          <input type="radio" id="CNG" name="Fuel_Type_Petrol" value="CNG" />
+          <label for="CNG">CNG</label>
+        </div>
+
+        <div class="inp">
+          <p>Are you a Dealer or Individual?</p>
+          <input
+            type="radio"
+            id="Dealer"
+            name="Seller_Type_Individual"
+            value="Dealer"
+            checked
+          />
+          <label for="Dealer">Dealer</label>
+          <input
+            type="radio"
+            id="Individual"
+            name="Seller_Type_Individual"
+            value="Individual"
+          />
+          <label for="Individual">Individual</label>
+        </div>
+
+        <div class="inp">
+          <p>Transmission type?</p>
+          <input
+            type="radio"
+            id="Automatic"
+            name="Transmission_Manual"
+            value="Automatic"
+            checked
+          />
+          <label for="Automatic">Automatic</label>
+          <input
+            type="radio"
+            id="Manual"
+            name="Transmission_Manual"
+            value="Manual"
+          />
+          <label for="Manual">Manual</label>
+        </div>
+
+        <button id="sub" type="submit">Calculate the Selling Price</button>
+        <h4>{{ prediction_text }}</h4>
+      </form>
+  </body>
+</html>
